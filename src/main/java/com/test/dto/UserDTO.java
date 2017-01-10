@@ -23,7 +23,7 @@ public class UserDTO implements Serializable {
     private String email;
 
     @NotEmpty(message = "Password could not be empty")
-//    @Pattern(regexp = "^(?=.*[0-9])+3{1,3}(?=.*[a-zA-Z])+3{1,3}(?=\\s+$)$")
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).*$")
     private String password;
 
     public UserDTO() {

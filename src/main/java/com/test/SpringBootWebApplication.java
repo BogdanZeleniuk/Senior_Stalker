@@ -13,16 +13,28 @@ public class SpringBootWebApplication {
 
     public static void main(String[] args) {
 
-        String patternOne = "^(?=.*[0-9])+3{1,3}(?=.*[a-zA-Z])+3{1,3}(?=\\s+$)$";
+        System.out.println(hasNumberUpperLowerLetter("a1a2p3Z4ZL"));
+        System.out.println(hasNoMoreThanFourCharacter("a12p3Z"));
 
-        String hasNumberUpperAndLowerLetters = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{7,}$";
-       // String hasNumberUpperAndLowerLetters = "^([0-9]{1,3})(?=.*[a-z])(?=.*[A-Z])(?=\\S+$)$";
-        String noMoreThanFourLetters = "(?=.*[a-zA-Z]{1,3})";
-        String hasNumber = "^(.*?\\d){1,3}$";
-        String test = "aaZZa133";
-        Pattern regexPattern = Pattern.compile(hasNumber);
-        Matcher matcher = regexPattern.matcher(test);
-        System.out.println(matcher.matches());
+    }
 
+    public static boolean hasNumberUpperLowerLetter(String password){
+        Pattern regexPattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).*$");
+        Matcher matcher = regexPattern.matcher(password);
+        return matcher.matches();
+    }
+
+    public static boolean hasNoMoreThanFourCharacter(String password){
+        char[] array = password.toCharArray();
+        int countOfDigitsInLine = 0;
+        int countOfLettersInLine = 0;
+        for (char anArray : array) {
+            if (Character.isDigit(anArray)) {
+                countOfDigitsInLine++;
+            } else {
+                countOfLettersInLine++;
+            }
+        }
+        return (countOfDigitsInLine < 4 && countOfLettersInLine < 4);
     }
 }
