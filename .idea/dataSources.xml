@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="172470617">
+    <data-source source="LOCAL" name="senior_stalker" uuid="ef47b984-bc2f-46cf-8240-fb1dc65701f1">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/senior_stalker</jdbc-url>
+    </data-source>
+  </component>
+</project>
