@@ -1,6 +1,7 @@
 package com.test.service;
 
 import com.test.AuthorizedUser;
+import com.test.dto.PasswordUtil;
 import com.test.dto.UserUtil;
 import com.test.model.User;
 import com.test.repository.UserRepository;
@@ -19,7 +20,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public User save(User user) {
-        return repository.save(UserUtil.prepareToSave(user));
+        if (PasswordUtil.hasNumberUpperLowerLetter(user.getPassword()) &&
+                PasswordUtil.hasNoMoreThanThreeCharacter(user.getPassword()) &&
+                PasswordUtil.hasLessThanThreeSameCharacter(user.getPassword())) {
+            return repository.save(UserUtil.prepareToSave(user));
+        }
+        return null;
     }
 
     @Override
