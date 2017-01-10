@@ -1,14 +1,12 @@
 package com.test.dto;
 
-import com.test.model.User;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import javax.validation.constraintvalidation.SupportedValidationTarget;
 import javax.validation.constraintvalidation.ValidationTarget;
 
-@SupportedValidationTarget(ValidationTarget.PARAMETERS)
-public class CheckValidation implements ConstraintValidator<CheckAnnotation, User> {
+@SupportedValidationTarget(ValidationTarget.ANNOTATED_ELEMENT)
+public class CheckValidation implements ConstraintValidator<CheckAnnotation, String> {
 
 
     @Override
@@ -17,12 +15,9 @@ public class CheckValidation implements ConstraintValidator<CheckAnnotation, Use
     }
 
     @Override
-    public boolean isValid(User user, ConstraintValidatorContext context) {
-        if (PasswordUtil.hasNumberUpperLowerLetter(user.getPassword()) &&
-                PasswordUtil.hasNoMoreThanThreeCharacter(user.getPassword()) &&
-                PasswordUtil.hasLessThanThreeSameCharacter(user.getPassword())){
-            return true;
-        }
-        return false;
+    public boolean isValid(String password, ConstraintValidatorContext context) {
+        return PasswordUtil.hasNumberUpperLowerLetter(password) &&
+                PasswordUtil.hasNoMoreThanThreeCharacter(password) &&
+                PasswordUtil.hasLessThanThreeSameCharacter(password);
     }
 }
