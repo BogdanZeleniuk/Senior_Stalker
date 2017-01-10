@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import java.util.List;
 
 @Repository
 @Transactional(readOnly = true)
@@ -25,11 +24,6 @@ public class UserRepositoryImpl implements UserRepository {
             return user;
         }
         return entityManager.merge(user);
-    }
-
-    @Override
-    public List<User> getAll() {
-        return entityManager.createNamedQuery(User.GET_ALL, User.class).getResultList();
     }
 
     @Override

@@ -13,12 +13,6 @@ public class UserUtil {
         return new UserDTO(user.getId(), user.getName(), user.getEmail(), user.getPassword());
     }
 
-    public static void updateUserFromDTO(User user, UserDTO userDTO) {
-        user.setName(userDTO.getName());
-        user.setEmail(userDTO.getEmail());
-        user.setPassword(userDTO.getPassword());
-    }
-
     public static User prepareToSave(User user) {
         user.setPassword(PasswordUtil.encode(user.getPassword()));
         user.setEmail(user.getEmail().toLowerCase());

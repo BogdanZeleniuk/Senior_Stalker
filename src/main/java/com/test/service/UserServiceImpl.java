@@ -23,11 +23,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public List<User> getAll() {
-        return repository.getAll();
-    }
-
-    @Override
     public User getByEmail(String email) {
         return repository.getByEmail(email);
     }

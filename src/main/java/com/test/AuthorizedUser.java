@@ -33,18 +33,6 @@ public class AuthorizedUser extends org.springframework.security.core.userdetail
         return user;
     }
 
-    public static int id() {
-        return get().userDTO.getId();
-    }
-
-    public void update(UserDTO newDTO) {
-        userDTO = newDTO;
-    }
-
-    public UserDTO getUserDTO() {
-        return userDTO;
-    }
-
     @Override
     public String toString() {
         return userDTO.toString();
