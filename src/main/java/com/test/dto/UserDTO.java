@@ -22,6 +22,7 @@ public class UserDTO implements Serializable {
     private String email;
 
     @NotEmpty(message = "Password could not be empty")
+    @CheckAnnotation (message = "Password is not valid")
     private String password;
 
     public UserDTO() {
