@@ -23,14 +23,10 @@ public class User extends NamedEntity{
     public static final String GET_ALL = "USER.GET_ALL";
     public static final String GET_BY_EMAIL = "USER.GET_BY_EMAIL";
 
-    @Email
     @Column(name = "email", nullable = false, unique = true)
-    @Size(min = 3, max = 30, message = "Email should have more than 3 letters")
-    @NotEmpty(message = "Email could not be empty")
     private String email;
 
     @Column(name = "password", nullable = false)
-    @NotEmpty(message = "Password could not be empty")
     private String password;
 
     @Enumerated(EnumType.STRING)
